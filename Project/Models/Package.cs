@@ -24,6 +24,7 @@ namespace Project.Models
         public required string Name { get; set; }
         public required string Description { get; set; }
         public int Price { get; set; }
-    
+        ////wanted to embedded a video but.....
+        //public string Video { get; set; }  // Stores YouTube/Vimeo embed URL
     }
 }

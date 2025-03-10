@@ -1,0 +1,217 @@
+﻿@model IEnumerable<Project.Models.PaymentDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<style>
+    body {
+        background: #0a0a0a;
+        color: #0ff;
+        font-family: 'Orbitron', sans-serif;
+        margin: 2rem;
+    }
+
+    h1 {
+        color: #ff6b6b;
+        text-shadow: 0 0 15px #ff6b6b;
+        border-bottom: 3px solid #ff6b6b;
+        padding-bottom: 1rem;
+        animation: titleGlow 2s infinite alternate;
+    }
+
+    .cyber-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #ff6b6b;
+        box-shadow: 0 0 30px rgba(255,107,107,0.3);
+        margin: 2rem 0;
+        background: rgba(0,0,0,0.8);
+        animation: tableEntrance 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+        .cyber-table th {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: #000;
+            padding: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        .cyber-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ff6b6b33;
+            transition: all 0.3s ease;
+        }
+
+        .cyber-table tr:hover {
+            background: rgba(255,107,107,0.1);
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255,107,107,0.2);
+        }
+
+    .cyber-button {
+        background: linear-gradient(45deg, #ff6b6b, #ff00ff);
+        color: #000 !important;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-family: 'Orbitron', sans-serif;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .cyber-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.6);
+        }
+
+    .edit-link {
+        color: #0ff;
+        text-decoration: none;
+        margin: 0 5px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    .delete-link {
+        color: #ff6b6b;
+        text-decoration: none;
+        margin: 0 5px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+        .edit-link:hover,
+        .delete-link:hover {
+            text-shadow: 0 0 10px currentColor;
+            background: rgba(255,255,255,0.1);
+        }
+
+    /* Status indicators */
+    td:nth-child(6) {
+        font-weight: bold;
+        text-shadow: 0 0 10px currentColor;
+    }
+
+        td:nth-child(6)[data-status="Paid"] {
+            color: #0f0;
+        }
+
+        td:nth-child(6)[data-status="Pending"] {
+            color: #ff0;
+        }
+
+        td:nth-child(6)[data-status="Cancelled"] {
+            color: #f00;
+        }
+
+    @@keyframes titleGlow {
+        from
+
+    {
+        text-shadow: 0 0 15px #ff6b6b;
+    }
+
+    to {
+        text-shadow: 0 0 25px #ff6b6b, 0 0 35px #ff6b6b;
+    }
+
+    }
+
+    @@keyframes tableEntrance {
+        from
+
+    {
+        opacity: 0;
+        transform: perspective(500px) rotateX(45deg) translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(500px) rotateX(0) translateY(0);
+    }
+
+    }
+
+    @@keyframes pulse {
+        0%
+
+    {
+        background-size: 100% 100%;
+    }
+
+    50% {
+        background-size: 200% 200%;
+    }
+
+    100% {
+        background-size: 100% 100%;
+    }
+
+    }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<h1>⨠⨠⨠ PAYMENT DATABASE ⨠⨠⨠</h1>
+
+<p>
+    <a asp-action="New" class="cyber-button">++ NEW PAYMENT ++</a>
+</p>
+
+<table class="cyber-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>BOOKING</th>
+            <th>AMOUNT</th>
+            <th>DATE</th>
+            <th>STATUS</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Pid</td>
+                <td>@item.CustomerName</td>
+                <td>@item.Bid</td>
+                <td>₹@item.TotalAmount.ToString("N2")</td>
+                <td>@item.PaymentDate.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@item.Status</td>
+
+                <td> 
+                    <a asp-action="Edit" asp-route-id="@item.Pid" class="edit-link">EDIT</a>
+
+                    <a asp-action="ConfirmDelete" asp-route-id="@item.Pid" class="delete-link">DELETE</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    // Add row entrance animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach((row, index) => {
+            row.style.opacity = '0';
+            setTimeout(() => {
+                row.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                row.style.opacity = '1';
+                row.style.transform = 'translateX(0)';
+            }, 50 * index);
+        });
+    });
+</script>
+
+

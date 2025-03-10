@@ -1,0 +1,123 @@
+﻿body {
+    background: #0a0a0a;
+    color: #ff4444;
+    font-family: 'Orbitron', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    background: linear-gradient(45deg, #1a0000, #2a0000);
+    border: 2px solid #ff4444;
+    border-radius: 15px;
+    padding: 2rem;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 0 0 30px rgba(255,68,68,0.3);
+    animation: glitchEntrance 1s ease-out;
+}
+
+h1 {
+    color: #ff4444;
+    text-shadow: 0 0 15px #ff0000;
+    font-size: 2.5rem;
+    border-bottom: 3px solid #ff4444;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+}
+
+.row {
+    background: rgba(0,0,0,0.7);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+dt {
+    color: #ff4444 !important;
+    text-shadow: 0 0 5px #ff000066;
+    font-size: 1.2rem;
+}
+
+dd {
+    color: #fff;
+    padding-left: 2rem;
+    border-left: 2px solid #ff4444;
+    margin-bottom: 1rem;
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #ff0000, #ff4444);
+    border: none;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-danger:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255,0,0,0.6);
+    }
+
+    .btn-danger::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient( 45deg, transparent, rgba(255,255,255,0.2), transparent );
+        transform: rotate(45deg);
+        animation: buttonShine 2s infinite;
+    }
+
+a[asp-action="Index"] {
+    color: #00ff00 !important;
+    text-decoration: none;
+    margin-left: 2rem;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #00ff00;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+    a[asp-action="Index"]:hover {
+        background: rgba(0,255,0,0.1);
+        text-shadow: 0 0 10px #00ff00;
+        transform: translateX(10px);
+    }
+
+@keyframes glitchEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) rotateX(45deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes buttonShine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}

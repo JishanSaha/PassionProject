@@ -1,0 +1,155 @@
+﻿body {
+    background: #0a0a0a;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    margin: 2rem;
+}
+
+h1 {
+    color: #ff6b6b;
+    text-shadow: 0 0 15px #ff6b6b;
+    border-bottom: 3px solid #ff6b6b;
+    padding-bottom: 1rem;
+    font-family: 'Orbitron', sans-serif;
+    animation: titleGlow 2s infinite alternate;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.8);
+    border: 2px solid #ff6b6b;
+    box-shadow: 0 0 30px rgba(255,107,107,0.3);
+    margin: 2rem 0;
+    animation: tableEntrance 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+    table.cyber-table {
+        width: 100%;
+    }
+.dual-tables {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    position: relative;
+}
+    .dual-tables::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient( to bottom, transparent, #ff6b6b, transparent );
+        box-shadow: 0 0 15px #ff6b6b;
+        animation: scanline 5s linear infinite;
+    }
+.data-terminal {
+    flex: 1 1 45%;
+    min-width: 400px;
+    animation: tableEntrance 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+th {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    color: #000;
+    padding: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    animation: pulseHeader 2s infinite;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #ff6b6b33;
+    transition: all 0.3s ease;
+}
+
+tr:hover {
+    background: rgba(255,107,107,0.1);
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255,107,107,0.2);
+}
+
+a[asp-action="Index"] {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #ff6b6b;
+    color: #000 !important;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    border: 2px solid transparent;
+}
+
+    a[asp-action="Index"]:hover {
+        background: transparent;
+        border-color: #ff6b6b;
+        color: #ff6b6b !important;
+        box-shadow: 0 0 15px rgba(255,107,107,0.6);
+    }
+
+@@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 15px #ff6b6b;
+    }
+
+    to {
+        text-shadow: 0 0 25px #ff6b6b, 0 0 35px #ff6b6b;
+    }
+}
+
+@keyframes tableEntrance {
+    from {
+        opacity: 0;
+        transform: perspective(500px) rotateX(45deg) translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(500px) rotateX(0) translateY(0);
+    }
+}
+
+@keyframes pulseHeader {
+    0% {
+        background-size: 100% 100%;
+    }
+
+    50% {
+        background-size: 200% 200%;
+    }
+
+    100% {
+        background-size: 100% 100%;
+    }
+}
+@keyframes scanline {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/* Status indicators */
+td:last-child {
+    font-weight: bold;
+    text-shadow: 0 0 10px currentColor;
+}
+
+    td:last-child[data-status="Paid"] {
+        color: #0f0;
+    }
+
+    td:last-child[data-status="Pending"] {
+        color: #ff0;
+    }
+
+    td:last-child[data-status="Cancelled"] {
+        color: #f00;
+    }
+

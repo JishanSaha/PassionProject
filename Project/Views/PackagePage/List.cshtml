@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Project.Models.PackageDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="~/css/PackageList.css" rel="stylesheet" />
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<h1>⨠⨠⨠ PACKAGE DATABASE ⨠⨠⨠</h1>
+
+<p>
+    <a asp-action="New" class="cyber-button">++ NEW PACKAGE ++</a>
+</p>
+
+<table class="cyber-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>DESCRIPTION</th>
+            <th>PRICE</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Pid</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>₹@item.Price.ToString("N2")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Pid" class="edit-link">EDIT</a>
+                    
+                    <a asp-action="ConfirmDelete" asp-route-id="@item.Pid" class="delete-link">DELETE</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    // Add row entrance animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach((row, index) => {
+            row.style.opacity = '0';
+            setTimeout(() => {
+                row.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                row.style.opacity = '1';
+                row.style.transform = 'translateX(0)';
+            }, 50 * index);
+        });
+    });
+</script>
+
+

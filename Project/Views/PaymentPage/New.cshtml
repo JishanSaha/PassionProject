@@ -1,0 +1,60 @@
+﻿@model Project.Models.PaymentDto
+
+@{
+    ViewData["Title"] = "New";
+}
+<link href="~/css/PackageData.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<h1><b><u>Create New Payment</u></b></h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Bid" class="control-label">BOOKING ID</label>
+                <input asp-for="Bid" class="form-control" />
+                <span asp-validation-for="Bid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalAmount" class="control-label">TOTAL AMOUNT</label>
+                <input asp-for="TotalAmount" class="form-control" />
+                <span asp-validation-for="TotalAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentDate" class="control-label">PAYMENT DATE</label>
+                <input asp-for="PaymentDate" class="form-control" />
+                <span asp-validation-for="PaymentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentDate" class="control-label">STATUS</label>
+                <select asp-for="Status" class="form-control">
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="PENDING">PENDING </option>
+                    <option value="TERMINATED">TERMINATED</option>
+                </select>
+                <span asp-validation-for="PaymentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="back-link-container">
+    <a asp-action="Index" class="cyber-link">
+        <i class="las la-undo"></i>
+        Back to List
+    </a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

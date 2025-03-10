@@ -1,0 +1,38 @@
+﻿@model Project.Models.PackageDto
+
+@{
+    ViewData["Title"] = "ConfirmDelete";
+}
+<link href="~/css/Delete.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<div class="container">
+    <h1>TERMINATION CONFIRMATION</h1>
+
+    <h3 class="text-warning">WARNING: This action cannot be undone!</h3>
+
+    <div class="data-destruct-container">
+        <div class="row">
+            <dl class="row">
+                <div class="col-sm-12">
+                    <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+                    <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+                    <dd>@Html.DisplayFor(model => model.Description)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Price)</dt>
+                    <dd>@Html.DisplayFor(model => model.Price)</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+    <div class="termination-actions">
+        <form asp-action="Delete" asp-route-id="@Model.Pid">
+            <input type="hidden" asp-for="Pid" />
+            <input type="submit" value="CONFIRM TERMINATION" class="btn btn-danger" />
+            <a asp-action="Index" class="abort-link">ABORT PROCESS</a>
+        </form>
+    </div>
+</div>

@@ -22,7 +22,7 @@ builder.Services.AddControllersWithViews();
 // Associate service interfaces with their implementations
 builder.Services.AddScoped<IPackageService, PackageService>();
 builder.Services.AddScoped<IBookingService, BookingService>();
-//builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 

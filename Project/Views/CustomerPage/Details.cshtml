@@ -1,0 +1,85 @@
+﻿@model Project.Models.ViewModels.CustomerDetails
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<link href="~/css/BookingDetails.css" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<div class="dual-tables">
+
+
+    <div class="data-terminal">
+        <h1>⨠⨠⨠ BOOKING DATABASE TERMINAL ⨠⨠⨠</h1>
+        <table class="cyber-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>CUSTOMER</th>
+                    <th>DATE</th>
+                    <th>PAYMENT</th>
+                    <th>STATUS</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var BookingDto in Model.CustomerBookings)
+                {
+                    <tr>
+                        <td>@BookingDto.Bid</td>
+                        <td>@BookingDto.CustomerName</td>
+                        <td>@BookingDto.BookingDate.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@BookingDto.PaymentMethod</td>
+                        <td data-status="@BookingDto.Status">@BookingDto.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="data-terminal">
+        <h1>⨠⨠⨠ PAYMENT DATABASE TERMINAL ⨠⨠⨠</h1>
+        <table class="cyber-table">
+            <thead>
+                <tr>
+                    <th>CUSTOMER</th>
+                    <th>BOOKING ID</th>
+                    <th>AMOUNT</th>
+                    <th>DATE</th>
+                    <th>SATUS</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var PaymentDto in Model.CustomerPayments)
+                {
+                    <tr>
+                        <td>@PaymentDto.CustomerName</td>
+                        <td>@PaymentDto.Bid</td>
+                        <td>@PaymentDto.TotalAmount</td>
+                        <td>@PaymentDto.PaymentDate.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td data-status="@PaymentDto.Status">@PaymentDto.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="terminal-return">
+    <a asp-action="Index" class="cyber-button">↵ RETURN TO MAINFRAME</a>
+</div>
+
+<script>
+    // Add terminal typing effect
+    document.addEventListener('DOMContentLoaded', function() {
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach((row, index) => {
+            row.style.opacity = '0';
+            setTimeout(() => {
+                row.style.transition = 'opacity 0.5s ease';
+                row.style.opacity = '1';
+            }, 100 * index);
+        });
+    });
+</script>

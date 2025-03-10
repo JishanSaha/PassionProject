@@ -153,3 +153,7 @@ C:\Users\subha\source\repos\Project\Project\obj\Debug\net8.0\refint\Project.dll
 C:\Users\subha\source\repos\Project\Project\obj\Debug\net8.0\Project.pdb
 C:\Users\subha\source\repos\Project\Project\obj\Debug\net8.0\Project.genruntimeconfig.cache
 C:\Users\subha\source\repos\Project\Project\obj\Debug\net8.0\ref\Project.dll
+C:\Users\subha\source\repos\Project\Project\bin\Debug\net8.0\Project.staticwebassets.endpoints.json
+C:\Users\subha\source\repos\Project\Project\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\subha\source\repos\Project\Project\obj\Debug\net8.0\staticwebassets\msbuild.Project.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\subha\source\repos\Project\Project\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -108,7 +108,7 @@ namespace Project.Services
                 serviceResponse.Status = ServiceResponse.ServiceStatus.NotFound;
                 if (customer == null)
                 {
-                    serviceResponse.Messages.Add("Product was not found. ");
+                    serviceResponse.Messages.Add("Booking was not found. ");
                 }
 
                 return serviceResponse;

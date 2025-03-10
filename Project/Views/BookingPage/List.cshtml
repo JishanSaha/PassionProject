@@ -1,0 +1,206 @@
+﻿@model IEnumerable<Project.Models.BookingDto>
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    body {
+        background-color: #1a1a1a;
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 2rem;
+    }
+
+    h1 {
+        color: #ff6b6b;
+        font-family: 'Orbitron', sans-serif;
+        text-shadow: 0 0 15px #ff6b6b;
+        border-bottom: 3px solid #ff6b6b;
+        padding-bottom: 1rem;
+        animation: titleGlow 2s infinite alternate;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #ff6b6b;
+        box-shadow: 0 0 30px rgba(255,107,107,0.3);
+        margin: 2rem 0;
+        animation: tableEntrance 1s ease-out;
+    }
+
+    th {
+        background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+        color: #000;
+        padding: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        animation: pulse 2s infinite;
+    }
+
+    td {
+        padding: 1rem;
+        border-bottom: 1px solid #ff6b6b33;
+        transition: all 0.3s ease;
+    }
+
+    tr:hover {
+        background: rgba(255,107,107,0.1);
+        transform: scale(1.02);
+        box-shadow: 0 0 15px rgba(255,107,107,0.2);
+    }
+    p{
+        margin-top:30px;
+    }
+
+    a {
+        color: #ff6b6b;
+        text-decoration: none;
+        margin: 0 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        a:hover {
+            text-shadow: 0 0 10px #ff6b6b;
+            background: rgba(255,107,107,0.2);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient( 90deg, transparent, rgba(255,255,255,0.2), transparent );
+            transition: 0.5s;
+        }
+
+        a:hover::after {
+            left: 100%;
+        }
+
+    p a {
+        
+        background: #ff6b6b;
+        color: #000 !important;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-family: 'Orbitron', sans-serif;
+        box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+    }
+
+        p a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.6);
+        }
+
+    @@keyframes titleGlow {
+        from {
+            text-shadow: 0 0 15px #ff6b6b;
+        }
+
+        to {
+            text-shadow: 0 0 25px #ff6b6b, 0 0 35px #ff6b6b;
+        }
+    }
+
+    @@keyframes tableEntrance {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes pulse {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Status indicators */
+    td:nth-child(5) {
+        font-weight: bold;
+        text-shadow: 0 0 10px currentColor;
+    }
+
+        td:nth-child(5)[data-status="Confirmed"] {
+            color: #0f0;
+        }
+
+        td:nth-child(5)[data-status="Pending"] {
+            color: #ff0;
+        }
+
+        td:nth-child(5)[data-status="Cancelled"] {
+            color: #f00;
+        }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<h1>⨠⨠⨠ BOOKING DATABASE ⨠⨠⨠</h1>
+
+<p>
+    <a asp-action="New" class="cyber-button">++ NEW BOOKING ++</a>
+</p>
+
+<table class="cyber-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>CUSTOMER</th>
+            <th>DATE</th>
+            <th>PAYMENT</th>
+            <th>STATUS</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Bid</td>
+                <td>@item.CustomerName</td>
+                <td>@item.BookingDate.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@item.PaymentMethod</td>
+                <td data-status="@item.Status">@item.Status</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Bid">EDIT</a>
+                    <a asp-action="Details" asp-route-id="@item.Bid">DETAILS</a>
+                    <a asp-action="ConfirmDelete" asp-route-id="@item.Bid" class="delete-link">DELETE</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    // Add row entrance animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach((row, index) => {
+            setTimeout(() => {
+                row.style.opacity = '1';
+                row.style.transform = 'translateY(0)';
+            }, 50 * index);
+        });
+    });
+</script>

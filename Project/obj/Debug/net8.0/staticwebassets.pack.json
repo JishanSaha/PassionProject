@@ -2,7 +2,39 @@
   "Files": [
     {
       "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Project.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Project.bundle.scp.css"
+      "PackagePath": "staticwebassets\\Project.r6r961knn5.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\css\\BookingData.css",
+      "PackagePath": "staticwebassets\\css\\BookingData.css"
+    },
+    {
+      "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\css\\BookingDetails.css",
+      "PackagePath": "staticwebassets\\css\\BookingDetails.css"
+    },
+    {
+      "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\css\\CustomerData.css",
+      "PackagePath": "staticwebassets\\css\\CustomerData.css"
+    },
+    {
+      "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\css\\CustomerDetails.css",
+      "PackagePath": "staticwebassets\\css\\CustomerDetails.css"
+    },
+    {
+      "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\css\\Delete.css",
+      "PackagePath": "staticwebassets\\css\\Delete.css"
+    },
+    {
+      "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\css\\List.css",
+      "PackagePath": "staticwebassets\\css\\List.css"
+    },
+    {
+      "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\css\\PackageData.css",
+      "PackagePath": "staticwebassets\\css\\PackageData.css"
+    },
+    {
+      "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\css\\PackageList.css",
+      "PackagePath": "staticwebassets\\css\\PackageList.css"
     },
     {
       "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\css\\site.css",
@@ -243,6 +275,10 @@
     {
       "Id": "C:\\Users\\subha\\source\\repos\\Project\\Project\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Project.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Project.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Deletes";
+
+    <meta http-equiv="refresh" content="6;url=/CustomerPage/List">
+}
+<link href="~/css/CustomerDetails.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<div class="container">
+    <h1 class="text-success">SYSTEM ALERT:  CUSTOMER PROFILE TERMINATED</h1>
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+    <h1>INITIATING REDIRECT SEQUENCE...</h1>
+</div>
+
+
+<div class="matrix-rain"></div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const headers = document.querySelectorAll('h1');
+        headers.forEach((header, index) => {
+            const text = header.innerText;
+            header.innerText = '';
+            let i = 0;
+            const typeWriter = setInterval(() => {
+                header.innerText += text[i];
+                i++;
+                if (i >= text.length) clearInterval(typeWriter);
+            }, 50 * index);
+        });
+    });
+</script>

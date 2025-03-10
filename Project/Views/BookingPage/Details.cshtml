@@ -1,0 +1,232 @@
+﻿@model Project.Models.ViewModels.BookingDetails
+@{
+    ViewData["Title"] = "View";
+}
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<link href="~/css/BookingDetails.css" rel="stylesheet" />
+<style>
+    input[type="submit"] {
+        background: linear-gradient(45deg, #ff4444, #ff0000);
+        color: #fff !important;
+        border: 1px solid #ff444477;
+        padding: 5px 15px;
+        border-radius: 3px;
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        margin: 0 5px;
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+    }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(45deg, #ff0000, #ff4444);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        input[type="submit"]::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient( 45deg, transparent, rgba(255, 255, 255, 0.2), transparent );
+            transform: rotate(45deg);
+            animation: buttonShine 3s infinite;
+        }
+
+        input[type="submit"]:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid #ff4444;
+            border-radius: 3px;
+            animation: borderPulse 1.5s infinite;
+        }
+
+    @@keyframes buttonShine {
+        0%
+
+    {
+        transform: translateX(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+
+    }
+
+    @@keyframes borderPulse {
+        0%
+
+    {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+    }
+
+    
+
+    /* Add button styling */
+    input[type="submit"][value="Add"] {
+        background: linear-gradient(45deg, #00ff00, #00cc00);
+        color: #000 !important;
+        border: 1px solid #00ff0077;
+        padding: 8px 25px;
+        border-radius: 3px;
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        margin-left: 10px;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        border-radius: 15px;
+    }
+
+    input[type="submit"][value="Add"]:hover {
+        background: linear-gradient(45deg, #00cc00, #00ff00);
+        transform: scale(1.1) translateY(-2px);
+        box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+
+    input[type="submit"][value="Add"]::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient( 45deg, transparent 10%, rgba(255, 255, 255, 0.4) 50%, transparent 90% );
+        transform: rotate(45deg);
+        animation: greenShine 2.5s infinite;
+    }
+
+    /* Select dropdown styling */
+    select[name="Pid"] {
+        background: rgba(0, 40, 0, 0.8);
+        color: #00ff00;
+        border: 2px solid #00ff00;
+        padding: 10px 35px 10px 15px;
+        font-family: 'Orbitron', sans-serif;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        appearance: none;
+        background-image: linear-gradient(45deg, transparent 50%, #00ff00 50%), linear-gradient(135deg, #00ff00 50%, transparent 50%);
+        background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
+        background-size: 5px 5px, 5px 5px;
+        background-repeat: no-repeat;
+    }
+
+        select[name="Pid"]:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+
+        select[name="Pid"] option {
+            background: #002200;
+            color: #00ff00;
+        }
+
+            select[name="Pid"] option:hover {
+                background: #004400 !important;
+            }
+
+        @@keyframes greenShine {
+        0%
+
+    {
+        transform: translateX(-150%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(150%) rotate(45deg);
+    }
+
+    }
+
+    /* Form container */
+    form[action="/BookingPage/LinkToPackage"] {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
+        background: rgba(0, 20, 0, 0.5);
+        border: 1px solid #00ff0077;
+        border-radius: 10px;
+        margin: 10px 0;
+    }
+
+
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<h1>⨠⨠⨠ PACKAGE DETAILS FOR BOOKING ⨠⨠⨠</h1>
+
+<div class="data-terminal">
+    <table class="cyber-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>PACKAGE NAME</th>
+                <th>DESCRIPTION</th>
+                <th>PRICE</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var PackageDto in Model.BookingPackages)
+            {
+                <tr>
+                    <td>@PackageDto.Pid</td>
+                    <td>@PackageDto.Name</td>
+                    <td>@PackageDto.Description</td>
+                    <td>@PackageDto.Price</td>
+                    <td>
+                        <form method="POST" action="/BookingPage/UnlinkFromPackage" style="display:inline">
+                            <input style="display:none" name="Bid" value="@Model.Booking.Bid" />
+                            <input style="display:none" name="Pid" value="@PackageDto.Pid" />
+                            <input type="submit" value=" Remove"/>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div> 
+    <form method="POST" action="/BookingPage/LinkToPackage">
+        <input style="display:none" name="Bid" value="@Model.Booking.Bid" />
+        <select name="Pid">
+            @foreach (var PackageDto in Model.AllPackages)
+            {
+                <option value="@PackageDto.Pid">@PackageDto.Name</option>
+            }
+        </select>
+        <input type="submit" value="Add" />
+    </form>
+</div>
+
+<div class="terminal-return">
+    <a asp-action="Index" class="cyber-button">↵ RETURN TO MAINFRAME</a>
+</div>

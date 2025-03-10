@@ -1,0 +1,41 @@
+﻿@model Project.Models.BookingDto
+
+@{
+    ViewData["Title"] = "ConfirmDelete";
+}
+<link href="~/css/Delete.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<div class="container">
+    <h1>TERMINATION CONFIRMATION</h1>
+
+    <h3 class="text-warning">WARNING: This action cannot be undone!</h3>
+
+    <div class="data-destruct-container">
+        <div class="row">
+            <dl class="row">
+                <div class="col-sm-12">
+                    <dt>@Html.DisplayNameFor(model => model.CustomerName)</dt>
+                    <dd>@Html.DisplayFor(model => model.CustomerName)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.BookingDate)</dt>
+                    <dd>@Html.DisplayFor(model => model.BookingDate)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.PaymentMethod)</dt>
+                    <dd>@Html.DisplayFor(model => model.PaymentMethod)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Status)</dt>
+                    <dd>@Html.DisplayFor(model => model.Status)</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+    <div class="termination-actions">
+        <form asp-action="Delete" asp-route-id="@Model.Bid">
+            <input type="hidden" asp-for="Bid" />
+            <input type="submit" value="CONFIRM TERMINATION" class="btn btn-danger" />
+            <a asp-action="Index" class="abort-link">ABORT PROCESS</a>
+        </form>
+    </div>
+</div>
